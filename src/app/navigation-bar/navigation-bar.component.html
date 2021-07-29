@@ -1,0 +1,20 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="toggleSideBar()" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+</mat-toolbar>
+<div class="sidebar" [@openClose]="isOpen ? 'open' : 'close'">
+  <button mat-icon-button (click)="toggleSideBar()" class="sidebar__close-button"
+    aria-label="Example icon button with a vertical three dot icon">
+    <mat-icon>close</mat-icon>
+  </button>
+  <ul>
+    <li class="sidebar__list" *ngFor="let item of routeList">
+      <a [routerLink]="item.path" class="sidebar__list-link"
+        [ngClass]="{'sidebar__list-link--active': item.path === currentPath}">
+        {{item.name}}
+      </a>
+    </li>
+  </ul>
+</div>
